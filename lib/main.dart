@@ -1,7 +1,14 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/pages/home_page.dart';
 
-void main() {
+void main() async {
+  //Init Hive
+  await Hive.initFlutter();
+
+  var box = await Hive.openBox('myBox');
   runApp(const MyApp());
 }
 
@@ -11,12 +18,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(  
-      debugShowCheckedModeBanner: false, 
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
       theme: ThemeData(primarySwatch: Colors.yellow),
-
     );
   }
 }
-
